@@ -54,8 +54,6 @@ class Student(models.Model):
     admission_no = models.CharField(max_length = 20, unique = True)
     name = models.TextField()
     sex = models.CharField(max_length = 1, choices = stud_sex_choices)
-    bloodgrp = models.CharField(max_length = 2, choices = stud_bloodgrp_choices)
-    birthdate = models.DateField()
     parent_guardian = models.TextField()
     stud_class = models.IntegerField(
         validators=[

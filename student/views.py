@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 
 def update_health_view(request):
     if not request.user.is_authenticated:
-        return "///"
+        return redirect('student:login')
 
     if not Student.objects.filter(user = request.user).exists():
         student = Student()
@@ -20,8 +20,6 @@ def update_health_view(request):
         student.admission_no = update_health_form.get('admission_no') or student.admission_no
         student.name = update_health_form.get('name') or student.name
         student.sex = update_health_form.get('sex') or student.sex
-        student.bloodgrp = update_health_form.get('bloodgrp') or student.bloodgrp
-        student.birthdate = update_health_form.get('birthdate') or student.birthdate
         student.parent_guardian = update_health_form.get('parent_guardian') or student.parent_guardian
         student.stud_class = update_health_form.get('stud_class') or student.stud_class
         student.height = update_health_form.get('height') or student.height
@@ -31,6 +29,9 @@ def update_health_view(request):
 
     update_health_form = UpdateStudHealthForm()
     return render(request, 'update_health.html', {'update_health_form': update_health_form})
+
+def all_health_view(request):
+    return render(request, 'health.html', {'students': Student.objects.all()})
 
 
 def home(request):
