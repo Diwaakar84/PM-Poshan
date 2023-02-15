@@ -5,4 +5,5 @@ class UpdateStudHealthForm(forms.ModelForm):
     class Meta:
         model = models.Student
         fields = forms.ALL_FIELDS
+
     
