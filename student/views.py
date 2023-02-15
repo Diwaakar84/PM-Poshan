@@ -34,7 +34,7 @@ def update_health_view(request):
 
 
 def home(request):
-    return HttpResponse('...')
+    return render(request, 'student.html')
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -51,7 +51,7 @@ def login_view(request):
                 return redirect('student:home')
     elif request.method == "GET":
         login_form = AuthenticationForm()
-        return render(request, 'login.html', {'login_form': login_form})
+        return render(request, 'stud_log.html', {'login_form': login_form})
     
 def signup_view(request):
     if request.user.is_authenticated:
@@ -66,7 +66,7 @@ def signup_view(request):
     else:
         signup_form = UserCreationForm()
     
-    return render(request, 'signup.html', {'signup_form': signup_form})
+    return render(request, 'reg_student.html', {'signup_form': signup_form})
 
 def logout_view(request):
     if not request.user.is_authenticated:
